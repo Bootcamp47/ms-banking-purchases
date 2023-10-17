@@ -33,7 +33,7 @@ public class PurchaseService implements PurchasesApiDelegate {
     }
 
     @Override
-    public ResponseEntity<PurchaseDTO> retrievePurchase(Long id) {
+    public ResponseEntity<PurchaseDTO> retrievePurchase(String id) {
         List<Purchase> purchases = purchaseRepository.findAll();
         Optional<PurchaseDTO> purchaseFound =
                 purchases
@@ -78,7 +78,7 @@ public class PurchaseService implements PurchasesApiDelegate {
     }
 
     @Override
-    public ResponseEntity<PurchaseDTO> deletePurchase(Long id) {
+    public ResponseEntity<PurchaseDTO> deletePurchase(String id) {
         List<Purchase> purchases = purchaseRepository.findAll();
         Optional<PurchaseDTO> purchaseFound =
                 purchases

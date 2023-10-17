@@ -15,11 +15,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Purchase {
 
     @Id
-    private Long id;
-    private Long customerId;
+    private String id;
+    private String customerId;
     private String customerType;
     private String customerName;
-    private Long productId;
+    private String productId;
     private String productType;
     private String productCategory;
     private String createdAt;
