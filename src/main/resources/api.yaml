@@ -81,6 +81,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PurchaseDTO"
+  /purchases/customer/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: customer ID
+        schema:
+          type: string
+    get:
+      summary: Retrieve customer purchases
+      operationId: retrieveCustomerPurchases
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchases'
+
 components:
   schemas:
     Purchases:

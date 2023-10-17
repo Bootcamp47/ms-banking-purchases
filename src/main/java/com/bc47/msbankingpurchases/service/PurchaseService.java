@@ -92,6 +92,17 @@ public class PurchaseService implements PurchasesApiDelegate {
         return purchaseFound.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.ok(new PurchaseDTO()));
     }
 
+    @Override
+    public ResponseEntity<List<PurchaseDTO>> retrieveCustomerPurchases(String id) {
+        List<Purchase> purchases = purchaseRepository.getAllByCustomerId(id);
+        List<PurchaseDTO> purchaseDTOList =
+                purchases
+                        .stream()
+                        .map(this::createDTO)
+                        .collect(Collectors.toList());
+        return new ResponseEntity<>(purchaseDTOList, HttpStatus.OK);
+    }
+
     private PurchaseDTO createDTO(Purchase purchase) {
         PurchaseDTO purchaseDTO = new PurchaseDTO();
         purchaseDTO.setId(purchase.getId());
